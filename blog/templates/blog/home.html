@@ -1,0 +1,30 @@
+<head>
+  <title>멋사</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <br>
+  <div class="container" style="text-align: center">
+    <div class="row">
+      <h1 class="col-6">이수지</h1>
+      <div class="col-6">
+        {%if user.is_active%}
+        <p>{{user.username}}
+          <a href="{% url 'logout'%}">logout</a></p>
+        {%else%}
+        <a href="{% url 'accounts:signup'%}">signup</a>
+        <a href="{% url 'login'%}">Login</a>
+        {%endif%}
+      </div>
+    </div>
+    {%for post in posts.all%}
+    <br>
+    <h2 style="text-align: center"><a href="{% url 'main' post.id %}">{{post.summary}}</a></h2>
+
+    {%endfor%}
+    <br>
+    <a href="{% url 'new'%}">글쓰기</a>
+  </div>
+</body>
